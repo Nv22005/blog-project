@@ -1,6 +1,6 @@
 import React from "react";
 
-import ArticleCard from "./container/Articles";
+import ArticleCard from "../../../components/ArticleCard";
 
 const Articles = () => {
   return (
