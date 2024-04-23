@@ -1,9 +1,10 @@
 import React from "react";
-import BreadCrumbs from "../../components/BreadCrumbs";
-import MainLayout from "../../components/MainLayout";
-import CommentsContainer from "../../components/comments/CommentsContainer";
-import { images } from "../../constants";
 import { Link } from "react-router-dom";
+import BreadCrumbs from "../../components/BreadCrumbs";
+import CommentsContainer from "../../components/comments/CommentsContainer";
+import MainLayout from "../../components/MainLayout";
+import SocialShareButtons from "../../components/SocialShareButtons";
+import { images } from "../../constants";
 import SuggestedPosts from "./container/SuggestedPosts";
 
 const breadCrumbsData = [
@@ -11,7 +12,6 @@ const breadCrumbsData = [
   { name: "Blog", link: "/blog" },
   { name: "Article title", link: "/blog/1" },
 ];
-
 const postsData = [
   {
     _id: "1",
@@ -38,7 +38,6 @@ const postsData = [
     createdAt: "2023-01-28T15:35:53.607+0000",
   },
 ];
-
 const tagsData = [
   "Medical",
   "Lifestyle",
@@ -48,7 +47,6 @@ const tagsData = [
   "Diet",
   "Education",
 ];
-
 const ArticleDetailPage = () => {
   return (
     <MainLayout>
@@ -82,15 +80,29 @@ const ArticleDetailPage = () => {
           </div>
           <CommentsContainer className="mt-10" logginedUserId="a" />
         </article>
-        <SuggestedPosts
-          header="Latest Article"
-          posts={postsData}
-          tags={tagsData}
-          className="mt-8 lg:mt-0 lg:max-w-xs"
-        />
+        <div>
+          <SuggestedPosts
+            header="Latest Article"
+            posts={postsData}
+            tags={tagsData}
+            className="mt-8 lg:mt-0 lg:max-w-xs"
+          />
+          <div className="mt-7">
+            <h2 className="font-roboto font-medium text-dark-hard mb-4 md:text-xl">
+              Share on:
+            </h2>
+            <SocialShareButtons
+              url={encodeURI(
+                "https://moonfo.com/post/client-side-and-server-side-explanation"
+              )}
+              title={encodeURIComponent(
+                "Client-side and Server-side explanation"
+              )}
+            />
+          </div>
+        </div>
       </section>
     </MainLayout>
   );
 };
-
 export default ArticleDetailPage;
